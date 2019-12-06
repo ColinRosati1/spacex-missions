@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,GAAG;CACf;;AAED,AAAA,YAAY,CAAC;EACT,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "launch.scss"
+    ],
+    "names": [],
+    "file": "launch.css"
+}
