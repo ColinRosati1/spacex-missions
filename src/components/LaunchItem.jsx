@@ -2,11 +2,13 @@ import React from 'react';
 import '../styles/launch.css';
 
 function LaunchItem(props) {
-  const {mission, location, event_date_utc,links} = props
+  const {mission, nationality, manufacturer, type} = props
   return (
     <div className="launch-item">
       <div className="launch-item-mission">{mission}</div>
-      <div className="launch-item-location">{location}</div>
+      <div className="launch-item-nationality">{nationality}</div>
+      <div className="launch-item-manufacturer">{manufacturer}</div>
+      <div className="launch-item-type">{type}</div>
     </div>
   );
 }

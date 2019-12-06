@@ -35,7 +35,7 @@ class Launches extends Component {
               <div onClick={this.handleClick}> Show Launches </div>
             :
               launchItems = launch.map( ( res, index ) => {
-                return <LaunchItem mission={res.mission_name} location={res.launch_site.site_name_long}  key={index}/>
+                return <LaunchItem mission={res.mission_name} nationality={res.rocket.second_stage.payloads[0].nationality} manufacturer={res.rocket.second_stage.payloads[0].manufacturer} type={res.rocket.second_stage.payloads[0].payload_type} key={index}/>
               })
           )
         }
