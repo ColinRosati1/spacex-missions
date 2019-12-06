@@ -17,14 +17,18 @@ class History extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(){
+  async handleClick(){
     console.log("handleClick history", this.props)
-    this.props.onHistoryApiRequest()
-    // .then(() => this.setState = {reveal_history: true})
+    
+    await this.props.onHistoryApiRequest()
+    .then( () => this.setState({reveal_history:true}))
+    
   }
   
   render() {
-    console.log(this.props)
+    let history = this.props.history
+    let histItems =[]
+    console.log("history",typeof history, history)
     return (
       <div className="history">
       <header className="history-header">
@@ -35,7 +39,11 @@ class History extends Component {
           ?
             <div onClick={this.handleClick}> Show history </div>
           :
-            <HistoryItem/>
+            histItems = history.map( res => {
+              console.log(res.title)
+              return <HistoryItem title={res.title} details={res.details} date={res.event_date_utc} link={res.links} key={res.id}/>
+            })
+            // <HistoryItem />
         )
       }
     </div>

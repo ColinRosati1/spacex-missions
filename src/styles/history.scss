@@ -3,4 +3,20 @@
     @include flex-center(column, center, center);
     width: 45%;
     padding: 1em;
+    font-size: 1.3em;
+    line-height: 20px;
+    font-style: bold;
+    box-shadow: 2px 2px 50px#000000
+}
+
+.history-item {
+    width: 100%;
+    padding: 1em;
+    font-size: 1em;
+    & < a {
+        color: red;
+    }
+    &>children {
+        padding: 1%;
+    }
 }

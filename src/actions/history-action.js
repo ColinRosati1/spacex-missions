@@ -10,7 +10,8 @@ export function updateHistory(newHistory) {
         type: UPDATE_HISTORY_API_REQUEST,
         payload: {
             history: newHistory
-        }
+        },
+        // posts: newHistory.data.children.map(child => child.data),
     }
 }
 
@@ -26,18 +27,9 @@ export function showErrorHistory() {
 export function historyApiRequest() {
     return dispatch => {
         console.log("history api request")
-        $.ajax({
-            url: 'https://api.spacexdata.com/v3/history',
-            success(response) {
-                console.log("SUCCESS", response)
-                    // return response
-                dispatch(updateHistory(response))
-            },
-            error() {
-                console.log("ERROR")
-                dispatch(showErrorHistory())
-            }
-
-        })
+        return fetch('https://api.spacexdata.com/v3/history')
+            .then(response => response.json())
+            .then(response => dispatch(updateHistory(response)))
+            // .catch(err => dispatch(showErrorHistory()))
     }
 }
