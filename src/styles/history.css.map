@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,GAAG;CACf",
+    "mappings": "AACA,AAAA,QAAQ,CAAC;ECAL,OAAO,EAAE,IAAI;EACb,eAAe,EDAc,MAAM;ECCnC,cAAc,EDDO,MAAM;ECE3B,WAAW,EDF0B,MAAM;EAC3C,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,GAAG;CACf",
     "sources": [
-        "history.scss"
+        "history.scss",
+        "mixins.scss"
     ],
     "names": [],
     "file": "history.css"
