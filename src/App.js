@@ -13,8 +13,8 @@ function App() {
         SPACE X MISSIONS
       </header>
       <div className="app-body">
-        <History/>
-        <Launches/>
+        <History className="app-body-wrapper"/>
+        <Launches className="app-body-wrapper"/>
       </div>
     </div>
   );

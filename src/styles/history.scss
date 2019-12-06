@@ -1,22 +1,28 @@
 @import 'mixins.scss';
 .history {
-    @include flex-center(column, center, center);
-    width: 45%;
-    padding: 1em;
+    // @include flex-center(column, center, center);
+    width: 50%;
+    margin: 2%;
+    height: 100%;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.history-header {
     font-size: 1.3em;
-    line-height: 20px;
     font-style: bold;
-    box-shadow: 2px 2px 50px#000000
 }
 
 .history-item {
-    width: 100%;
+    width: 90%;
+    font-size: 1em;
     padding: 1em;
     font-size: 1em;
-    & < a {
+    line-height: 70px;
+    &.history-item-link {
         color: red;
-    }
-    &>children {
-        padding: 1%;
     }
 }

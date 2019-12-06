@@ -11,7 +11,6 @@ export function updateHistory(newHistory) {
         payload: {
             history: newHistory
         },
-        // posts: newHistory.data.children.map(child => child.data),
     }
 }
 
@@ -26,10 +25,12 @@ export function showErrorHistory() {
 
 export function historyApiRequest() {
     return dispatch => {
-        console.log("history api request")
         return fetch('https://api.spacexdata.com/v3/history')
             .then(response => response.json())
             .then(response => dispatch(updateHistory(response)))
-            // .catch(err => dispatch(showErrorHistory()))
+            .catch(err => {
+                console.log("API ERROR")
+                dispatch(showErrorHistory())
+            })
     }
 }

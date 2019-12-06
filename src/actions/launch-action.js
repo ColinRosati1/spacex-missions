@@ -31,19 +31,14 @@ export function showErrorLaunch() {
     }
 }
 
-export function apiRequest() {
+export function LaunchApiRequest() {
     return dispatch => {
-        $.ajax({
-            url: '',
-            success(response) {
-                console.log("SUCCESS", response)
-                dispatch(updateLaunch(response.newLaunch))
-            },
-            error() {
-                console.log("ERROR")
+        return fetch('https://api.spacexdata.com/v3/launches')
+            .then(response => response.json())
+            .then(response => dispatch(updateLaunch(response)))
+            .catch(err => {
+                console.log("API ERROR")
                 dispatch(showErrorLaunch())
-            }
-
-        })
+            })
     }
 }

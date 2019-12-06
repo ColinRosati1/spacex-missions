@@ -7,6 +7,7 @@
 .app-body {
     @include flex-center(row, center, center);
     padding: 1em;
+    height: 85vh;
     font-size: calc(10px + 2vmin);
 }
 
@@ -19,6 +20,14 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+}
+
+.app-body-wrapper {
+    @include flex-center(column, center, center);
+    width: 45%;
+    height: 100vh;
+    padding: 1em;
+    box-shadow: 1px 1px 100px #000;
 }
 
 .App-link {
