@@ -4,6 +4,8 @@ import './styles/App.css';
 import History from './components/History'
 import Launches from './components/Launches'
 
+import { connect } from 'react-redux'
+
 function App() {
   return (
     <div className="App">
@@ -18,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);
