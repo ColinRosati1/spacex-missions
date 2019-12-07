@@ -2,7 +2,8 @@ import React , { Component } from 'react';
 import '../styles/launch.css';
 
 import LaunchItem from './LaunchItem'
-import { updateLaunch, LaunchApiRequest, revealLaunchModal, showErrorLaunch } from '../actions/launch-action'
+import { updateLaunch, LaunchApiRequest,  showErrorLaunch } from '../actions/launch-action'
+import { revealLaunchModal }  from '../actions/modal-action'
 import { connect } from 'react-redux'
 
 class Launches extends Component {
@@ -34,7 +35,7 @@ class Launches extends Component {
 
   //gets the mission data and changes modal state
   displayModal(mission){
-    console.log(mission)
+    console.log(this.props)
     this.props.onRevealLaunchModal(mission)
   }
   
@@ -74,8 +75,9 @@ class Launches extends Component {
 
 const mapStateToProps = (state, props) => {
   return{
-    launch: state.launch,
     history: state.history,
+    launch: state.launch,
+    select_launch: state.select_launch,
   }
 }
 

@@ -9,11 +9,12 @@ import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import historyReducer from './reducers/history-reducer'
 import launchReducer from './reducers/launch-reducer'
+import modalReducer from './reducers/modal-reducer'
 
 const allReducer = combineReducers({
     history: historyReducer,
     launch: launchReducer,
-    select_launch: launchReducer
+    select_launch: modalReducer
 })
 
 const allStoreEnhancers = compose(

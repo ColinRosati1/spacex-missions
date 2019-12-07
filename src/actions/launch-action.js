@@ -1,7 +1,6 @@
 import $ from 'jquery';
 
 export const UPDATE_LAUNCH_API_REQUEST_SUCCESS = 'launch:updateLaunch'
-export const REVEAL_LAUNCH_MODAL = 'select_launch:revealLaunchModal'
 export const SHOW_LAUNCH_API_REQUEST_ERROR = 'launch:showErrorLaunch'
 
 export function updateLaunch(newLaunch) {
@@ -9,15 +8,6 @@ export function updateLaunch(newLaunch) {
         type: UPDATE_LAUNCH_API_REQUEST_SUCCESS,
         payload: {
             launch: newLaunch
-        }
-    }
-}
-
-export function revealLaunchModal(revealLaunch) {
-    return {
-        type: REVEAL_LAUNCH_MODAL,
-        payload: {
-            select_launch: revealLaunch
         }
     }
 }
