@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { revealLaunchModal }  from '../actions/modal-action'
+import { connect } from 'react-redux'
+
  
 const customStyles = {
   content : {
@@ -14,7 +17,7 @@ const customStyles = {
 };
  
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('.App')
+// Modal.setAppElement('.App')
  
 class LaunchModal extends React.Component {
   constructor() {
@@ -70,4 +73,16 @@ class LaunchModal extends React.Component {
   }
 }
  
-ReactDOM.render(<App />, appElement);
+const mapStateToProps = (state, props) => {
+    return{
+      history: state.history,
+      launch: state.launch,
+      select_launch: state.select_launch,
+    }
+  }
+  
+  const mapDispatchToProps = {
+      onRevealLaunchModal: revealLaunchModal
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchModal)

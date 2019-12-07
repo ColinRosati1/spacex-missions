@@ -14,6 +14,7 @@ class Launches extends Component {
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleModal = this.handleModal.bind(this)
+    this.handleSearchLaunch = this.handleSearchLaunch.bind(this)
   }
 
   async handleClick(){
@@ -37,16 +38,26 @@ class Launches extends Component {
   displayModal(mission){
     console.log(this.props)
     this.props.onRevealLaunchModal(mission)
+
   }
   
   // filters mission from mission name
   // return one mission from props
   selectMission(missionName){
+    console.log(missionName)
     const mission = this.props.launch.filter( ( res, i ) => {
       return res.mission_name === missionName
     })
 
     return mission
+  }
+
+  handleSearchLaunch(event){
+    event.preventDefault()
+    const data = new FormData(event.target);
+    const name = data.get('name')
+    const selected_mission = this.selectMission(name)
+    console.log(selected_mission)
   }
 
   render() {
@@ -58,6 +69,12 @@ class Launches extends Component {
         <header className="launch-header">
           Launches
         </header>
+        <form onSubmit={this.handleSearchLaunch}>
+          <label>
+            <input type="text" name="name" />
+          </label>
+          <input type="submit" value="search" />
+        </form>
         {
           (this.state.reveal_launch === false
             ?
