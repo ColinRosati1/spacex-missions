@@ -27,8 +27,7 @@ class History extends Component {
   
   render() {
     let history = this.props.history
-    let histItems =[]
-    console.log("history",typeof history, history)
+    let histItems = []
     return (
       <div className="history">
       <header className="history-header">
@@ -43,7 +42,6 @@ class History extends Component {
               console.log(res.title)
               return <HistoryItem title={res.title} details={res.details} date={res.event_date_utc} link={res.links} key={res.id}/>
             })
-            // <HistoryItem />
         )
       }
     </div>

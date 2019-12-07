@@ -3,10 +3,6 @@ import React from 'react'
 import Enzyme, { shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-// test # of props
-// test length of div children
-
-
 Enzyme.configure({ adapter: new Adapter() }) // look up how to do this globally
 
 describe('historyItem component', () => {
@@ -33,11 +29,9 @@ describe('historyItem component', () => {
     it('should have 5 divs', () => {
         const wrapper = shallow( <HistoryItem/> )
         const children = wrapper.find('div').children()
-        console.log(children.length)
         expect(children.length).toBe(5);
     })
 
-    
     it('should be show contain text', () => {
         const wrapper = shallow( <HistoryItem/> )
         const text = wrapper.find('.history-item-link')
