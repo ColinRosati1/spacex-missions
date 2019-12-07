@@ -12,7 +12,8 @@ import launchReducer from './reducers/launch-reducer'
 
 const allReducer = combineReducers({
     history: historyReducer,
-    launch: launchReducer
+    launch: launchReducer,
+    select_launch: launchReducer
 })
 
 const allStoreEnhancers = compose(
@@ -23,18 +24,17 @@ const allStoreEnhancers = compose(
 const store = createStore(
     allReducer, {
         history: {},
-        launch: {}
+        launch: {},
+        select_launch: {}
     },
     allStoreEnhancers
 )
-console.log(store.getState())
 
+export default store
 
-// export default store
+ReactDOM.render( < Provider store = { store } > < App / > < /Provider>, document.getElementById('root'));
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+        // If you want your app to work offline and load faster, you can change
+        // unregister() to register() below. Note this comes with some pitfalls.
+        // Learn more about service workers: https://bit.ly/CRA-PWA
+        serviceWorker.unregister();

@@ -6,7 +6,7 @@ import HistoryItem from './HistoryItem'
 import { updateHistory, historyApiRequest, showErrorHistory } from '../actions/history-action'
 import { connect } from 'react-redux'
 
-class History extends Component {
+export class History extends Component {
   constructor(props) {
     super(props)
   
@@ -29,17 +29,16 @@ class History extends Component {
     let history = this.props.history
     let histItems = []
     return (
-      <div className="history">
+      <div className="history" onClick={this.handleClick}>
       <header className="history-header">
         History
       </header>
       {
         (this.state.reveal_history === false
           ?
-            <div onClick={this.handleClick}> Show history </div>
+            <div> Show history </div>
           :
             histItems = history.map( res => {
-              console.log(res.title)
               return <HistoryItem title={res.title} details={res.details} date={res.event_date_utc} link={res.links} key={res.id}/>
             })
         )

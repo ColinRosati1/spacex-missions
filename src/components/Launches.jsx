@@ -12,30 +12,58 @@ class Launches extends Component {
        reveal_launch: false
     }
     this.handleClick = this.handleClick.bind(this)
+    this.handleModal = this.handleModal.bind(this)
   }
 
   async handleClick(){
-    console.log("handleClick Launch", this.props)
-    await this.props.onLaunchApiRequest()
-    .then( () => this.setState({reveal_launch:true}))
+    const rev = this.state.reveal_launch;
+    return ( this.state.reveal_launch == true
+      ?
+       'Show Launches' 
+      :
+        await this.props.onLaunchApiRequest()
+        .then( () => this.setState({reveal_launch:true}))
+    )
+  }
+
+  handleModal(event){
+    const name = event.currentTarget.childNodes[0].innerHTML
+    const selected_mission = this.selectMission(name)
+    this.displayModal(selected_mission)
+  }
+
+  //gets the mission data and changes modal state
+  displayModal(mission){
+    console.log(mission)
+    this.props.onRevealLaunchModal(mission)
   }
   
+  // filters mission from mission name
+  // return one mission from props
+  selectMission(missionName){
+    const mission = this.props.launch.filter( ( res, i ) => {
+      return res.mission_name === missionName
+    })
+
+    return mission
+  }
+
   render() {
     let launch = this.props.launch
     let launchItems = []
-    console.log("launch",typeof launch, launch)
+    // console.log("launch",typeof launch, launch)
     return (
-      <div className="launch">
+      <div className="launch" onClick={this.handleClick}>
         <header className="launch-header">
           Launches
         </header>
         {
           (this.state.reveal_launch === false
             ?
-              <div onClick={this.handleClick}> Show Launches </div>
+              <div> Show Launches </div>
             :
               launchItems = launch.map( ( res, index ) => {
-                return <LaunchItem mission={res.mission_name} nationality={res.rocket.second_stage.payloads[0].nationality} manufacturer={res.rocket.second_stage.payloads[0].manufacturer} type={res.rocket.second_stage.payloads[0].payload_type} key={index}/>
+                return <LaunchItem  onClick={this.handleModal} mission={res.mission_name} nationality={res.rocket.second_stage.payloads[0].nationality} manufacturer={res.rocket.second_stage.payloads[0].manufacturer} type={res.rocket.second_stage.payloads[0].payload_type} key={index} />
               })
           )
         }

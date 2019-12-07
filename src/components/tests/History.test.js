@@ -1,18 +1,36 @@
-import History from '../History';
+import ConnectedApp, { History } from '../History';
 import React from 'react'
 import Enzyme, { shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import { connect } from 'react-redux'
+
+// import { Provider } from 'react-redux'
+// import { applyMiddleware,a compose, combineReducers, createStore } from 'redux'
+// import store from '../../index.js'
+
 
 Enzyme.configure({ adapter: new Adapter() }) // look up how to do this globally
 
-// test snapshot of component to be valid
-// test states
-// test handleClick method
-// test header exists
-// test body exists
-// test conditional rendering
-// test simulate onclick event
 
+function setup() {
+    const wrapper = shallow(<History/>)
+  
+    return {
+      wrapper
+    }
+  }
+
+  describe('components', () => {
+    const { wrapper } = setup()
+      it('should render self and subcomponents', () => {
+        // expect(wrapper.find('.history')).to.have.lengthOf(1)
+      })
+
+      it('should render header', () => {
+        // expect(wrapper.find('.history-header')).to.have.lengthOf(1)
+    });
+
+  })
 
 describe('History component', () => {
     it('should render hitoryitems component', () => {
@@ -38,26 +56,38 @@ describe('History component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+
     it('should expect state is either true of false', () => {
-        const it = mount(<HistoryItem/>);
-        expect(it.props().title).not.toBeNull();
-        expect(it.props().details).not.toBeNull();
-        expect(it.props().event_date_utc).not.toBeNull();
-        expect(it.props().links).not.toBeNull();
+        const wrapper = shallow(<History/>)
+        expect(wrapper.state().reveal_history).toBe(false);
+
     })
 
-    // it('should have 5 divs', () => {
-    //     const wrapper = shallow( <HistoryItem/> )
-    //     const children = wrapper.find('div').children()
-    //     console.log(children.length)
-    //     expect(children.length).toBe(5);
-    // })
+    it('should have default state 2 child div', () => {
+        
+    })
 
-    // it('should be show contain text', () => {
-    //     const wrapper = shallow( <HistoryItem/> )
-    //     const text = wrapper.find('.history-item-link')
-    //     expect(text.text()).toBe('more')
-    // })
+    it('should have a clickable div', () => {
+        
+    })
 
+    it('should contain historyitem component', () => {
+  
+    })
+
+})
+
+describe("interaction", () => {
+    it('should simulate click method', () => {
+        
+    })
+
+    it('should click method call api', () => {
+  
+    })
+
+    it('should api have async results', () => {
+  
+    })
 
 })
