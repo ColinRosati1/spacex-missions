@@ -60,12 +60,16 @@ class Launches extends Component {
   }
 
   // search part of the string
-  handleSearchLaunch(event){
+  async handleSearchLaunch(event){
     event.preventDefault()
     const data = new FormData(event.target);
     const name = data.get('name')
-    const selected_mission = this.selectMission(name)
-    this.props.onLaunchUpdate(selected_mission)
+ 
+   !name ? 
+        await this.props.onLaunchApiRequest() // if no name searched but submitted call api request
+      :
+        this.props.onLaunchUpdate( this.selectMission(name))
+    
   }
 
   render() {
