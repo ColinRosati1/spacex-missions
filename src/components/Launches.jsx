@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import '../styles/launch.css';
 
 import LaunchItem from './LaunchItem'
-import { updateLaunch, LaunchApiRequest,  showErrorLaunch } from '../actions/launch-action'
+import { LaunchApiRequest, launchUpdate, showErrorLaunch } from '../actions/launch-action'
 import { revealLaunchModal }  from '../actions/modal-action'
 import { connect } from 'react-redux'
 
@@ -42,28 +42,35 @@ class Launches extends Component {
   }
   
   // filters mission from mission name
-  // return one mission from props
+  // return missions matchin search
   selectMission(missionName){
     console.log(missionName)
+    let mission_array = []
     const mission = this.props.launch.filter( ( res, i ) => {
-      return res.mission_name === missionName
+      let _name = res.mission_name  
+      let _lower_name = _name.toLowerCase() // convert to lower case
+      let _lower_mission =  missionName.toLowerCase()  // convert to lower case
+      let x = (_lower_name.includes(_lower_mission) == true ? // case insensitive search
+         mission_array.push(res)
+       : null
+      )
     })
 
-    return mission
+    return mission_array
   }
 
+  // search part of the string
   handleSearchLaunch(event){
     event.preventDefault()
     const data = new FormData(event.target);
     const name = data.get('name')
     const selected_mission = this.selectMission(name)
-    console.log(selected_mission)
+    this.props.onLaunchUpdate(selected_mission)
   }
 
   render() {
     let launch = this.props.launch
     let launchItems = []
-    // console.log("launch",typeof launch, launch)
     return (
       <div className="launch" onClick={this.handleClick}>
         <header className="launch-header">
@@ -99,8 +106,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = {
-    onUpdateHistory: updateLaunch,
     onLaunchApiRequest: LaunchApiRequest,
+    onLaunchUpdate: launchUpdate,
     onShowError: showErrorLaunch,
     onRevealLaunchModal: revealLaunchModal
 }
