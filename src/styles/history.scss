@@ -21,8 +21,9 @@
     font-size: 1em;
     padding: 1em;
     font-size: 1em;
-    line-height: 70px;
-    &.history-item-link {
+    line-height: 40px;
+    text-align: left;
+    .history-item-link {
         color: red;
     }
 }

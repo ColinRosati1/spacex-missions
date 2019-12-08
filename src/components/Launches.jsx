@@ -44,17 +44,17 @@ class Launches extends Component {
   // filters mission from mission name
   // return missions matchin search
   selectMission(missionName){
-    console.log(missionName)
+    console.log(document.getElementsByClassName('launch-body'), this.props.launch.name)
     let mission_array = []
-    const mission = this.props.launch.filter( ( res, i ) => {
-      let _name = res.mission_name  
-      let _lower_name = _name.toLowerCase() // convert to lower case
-      let _lower_mission =  missionName.toLowerCase()  // convert to lower case
-      let x = (_lower_name.includes(_lower_mission) == true ? // case insensitive search
-         mission_array.push(res)
-       : null
-      )
-    })
+          this.props.launch.filter( ( res, i ) => {
+            let _name = res.mission_name  
+            let _lower_name = _name.toLowerCase() // convert to lower case
+            let _lower_mission =  missionName.toLowerCase()  // convert to lower case
+            let x = (_lower_name.includes(_lower_mission) == true ? // case insensitive search
+              mission_array.push(res)
+            : null
+            )
+          })
 
     return mission_array
   }
@@ -79,21 +79,25 @@ class Launches extends Component {
       <div className="launch" onClick={this.handleClick}>
         <header className="launch-header">
           Launches
-        </header>
-        <form onSubmit={this.handleSearchLaunch}>
+          <form onSubmit={this.handleSearchLaunch}>
           <label>
             <input type="text" name="name" />
           </label>
           <input type="submit" value="search" />
         </form>
+        </header>
         {
           (this.state.reveal_launch === false
             ?
-              <div> Show Launches </div>
+              <div className="launch-body"> Show Launches </div>
             :
-              launchItems = launch.map( ( res, index ) => {
+            <div className="launch-body">
+            { 
+                launchItems = launch.map( ( res, index ) => {
                 return <LaunchItem  onClick={this.handleModal} mission={res.mission_name} nationality={res.rocket.second_stage.payloads[0].nationality} manufacturer={res.rocket.second_stage.payloads[0].manufacturer} type={res.rocket.second_stage.payloads[0].payload_type} key={index} />
               })
+            }
+            </div>
           )
         }
       </div>

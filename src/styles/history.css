@@ -20,10 +20,11 @@
   font-size: 1em;
   padding: 1em;
   font-size: 1em;
-  line-height: 70px;
+  line-height: 40px;
+  text-align: left;
 }
 
-.history-item.history-item-link {
+.history-item .history-item-link {
   color: red;
 }
 /*# sourceMappingURL=history.css.map */

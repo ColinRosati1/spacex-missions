@@ -6,13 +6,13 @@
 
 .app-body {
     @include flex-center(row, center, center);
-    padding: 1em;
+    padding: 0em 1em 1em 1em;
     height: 85vh;
     font-size: calc(10px + 2vmin);
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: #000;
     min-height: 15vh;
     display: flex;
     flex-direction: column;
