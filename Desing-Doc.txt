@@ -10,7 +10,7 @@ API documented in this page: https://docs.spacexdata.com/?version=latest
 
 Task 
 ----------------------
-●	 Use Redux
+●	Use Redux
 ●	Main app has two components History & launches
 ●	History onclick  api display results
 ●	Launch onclick api display results
@@ -19,7 +19,7 @@ Task
 
 Context
 ----------------------
-React, Redux, Flexbox, Jest, 
+React, Redux, Flexbox, Jest, Enzyme 
 
 
 Proposed Solution
@@ -30,7 +30,9 @@ Redux actions query api, seach api results. Components render different states b
 
 TODOS
 ----------------------
-
+Add more unit testing
+Add integration testing with redux store
+make more launch api performance optimizations
 
 Steps to Run
 ----------------------
