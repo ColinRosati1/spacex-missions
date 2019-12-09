@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App'
 import Modal from 'react-modal';
 import { revealLaunchModal }  from '../actions/modal-action'
 import { connect } from 'react-redux'
@@ -23,7 +21,7 @@ const customStyles = {
 };
  
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(App)
+Modal.setAppElement(document.getElementById('root'));
  
 class LaunchModal extends React.Component {
   constructor(props) {
@@ -46,6 +44,10 @@ class LaunchModal extends React.Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   }
+
+  componentDidMount() {
+    // Modal.setAppElement('body');
+ }
  
   // Modal reacts to updata selected mission props
   // using outdated react effect for the time being. I realize this is depricated
@@ -75,7 +77,6 @@ class LaunchModal extends React.Component {
 
 
   render() {
-   console.log(this.props.select_launch[0])
    let mission = ''
    if(this.props.select_launch[0]){
      mission = this.props.select_launch[0];

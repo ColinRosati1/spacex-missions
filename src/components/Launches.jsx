@@ -16,12 +16,12 @@ class Launches extends Component {
     this.handleModal = this.handleModal.bind(this)
     this.handleSearchLaunch = this.handleSearchLaunch.bind(this)
   }
+  
 
   async handleClick(){
     const rev = this.state.reveal_launch;
     var x = document.getElementsByClassName("launch")[0];
     x.querySelector(".launch-body").innerHTML = "Searching ...";
-    console.log(x)
     return ( rev == true
       ?
        null
