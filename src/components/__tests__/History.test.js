@@ -2,14 +2,8 @@ import ConnectedApp, { History } from '../History';
 import React from 'react'
 import Enzyme, { shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { connect } from 'react-redux'
 
-// import { Provider } from 'react-redux'
-// import { applyMiddleware,a compose, combineReducers, createStore } from 'redux'
-// import store from '../../index.js'
-
-
-Enzyme.configure({ adapter: new Adapter() }) // look up how to do this globally
+Enzyme.configure({ adapter: new Adapter() })
 
 
 function setup() {

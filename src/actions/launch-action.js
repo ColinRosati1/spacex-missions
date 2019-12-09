@@ -22,7 +22,8 @@ export function showErrorLaunch() {
 export function LaunchApiRequest() {
     return dispatch => {
         return fetch('https://api.spacexdata.com/v3/launches', {
-                'X-RateLimit-limit': 50
+                accept: 'application/json',
+                'Content-Length': '348'
             })
             .then(response => response.json())
             .then(response => dispatch(launchUpdate(response)))
