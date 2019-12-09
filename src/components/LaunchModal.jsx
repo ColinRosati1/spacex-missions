@@ -36,6 +36,7 @@ class LaunchModal extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleModalSubmit = this.handleModalSubmit.bind(this)
   }
  
   openModal() {
@@ -59,6 +60,24 @@ class LaunchModal extends React.Component {
       this.openModal()
     }
   }
+
+  handleModalSubmit(event){
+    event.preventDefault()
+    const eData = new FormData(event.target)
+    const name = eData.get('name')
+    const formData = {
+      'user_favorite': name,
+      "mission": this.props.select_launch[0]
+    }
+    console.log(event, eData, formData)
+    const url = 'https://api.spacexdata.com/v3/launches/67'
+    fetch(url, {
+      type: "POST",
+      data: formData
+    })
+    .then(res => console.log(res))
+  }
+
 
   render() {
    console.log(this.props.select_launch[0])
@@ -84,8 +103,8 @@ class LaunchModal extends React.Component {
           <div>{mission.details}</div>
           <div>{mission.launch_year}</div>
           <div>{mission.launch_date_local}</div>
-          <form onSubmit={this.handleSearchLaunch}>
-          <label className="modal-form">Submit favourite mission 
+          <form onSubmit={this.handleModalSubmit}>
+          <label className="modal-form">Enter your favorite mission 
             <input type="text" name="name" />
           </label>
           <input type="submit" value="search" />
