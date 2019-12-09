@@ -16,6 +16,7 @@ const customStyles = {
     padding               : ' 1em',
     transform             : 'translate(-50%, -50%)',
     width                 : '80%',
+    height                : '30%',
     background            : 'black',
     color                 : 'white'
   }
@@ -59,23 +60,6 @@ class LaunchModal extends React.Component {
     }
   }
 
-//   static getDerivedStateFromProps(nextProps, prevState, state){
-//     console.log(nextProps.select_launch, prevState, nextProps.select_launch.length)
-//     let _st;
-//     if(nextProps.select_launch.length <= 1){
-//       // this.openModal()
-//       // return this.setState({modalIsOpen: true})
-//       if(prevState.modalIsOpen === true){
-//           // return { modalIsOpen: false}
-//       } else{
-//          return { modalIsOpen: true}
-//       }
-      
-
-//    }
-//    else return null;
-//  }
-
   render() {
    console.log(this.props.select_launch[0])
    let mission = ''
@@ -83,7 +67,6 @@ class LaunchModal extends React.Component {
    let links;
    if(this.props.select_launch[0]){
      mission = this.props.select_launch[0];
-    //  rocket = this.props.select_launch[0].mission.rocket;
      links = this.props.select_launch[0].links;
    }
     return (
@@ -95,12 +78,18 @@ class LaunchModal extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <button onClick={this.closeModal}>close</button>
+          <button className={"modal-button"} onClick={this.closeModal}>close</button>
           <h2 ref={subtitle => this.subtitle = subtitle}>{mission.mission_name}</h2>
           
           <div>{mission.details}</div>
           <div>{mission.launch_year}</div>
           <div>{mission.launch_date_local}</div>
+          <form onSubmit={this.handleSearchLaunch}>
+          <label className="modal-form">Submit favourite mission 
+            <input type="text" name="name" />
+          </label>
+          <input type="submit" value="search" />
+        </form>
         </Modal>
       </div>
     );
