@@ -34,7 +34,6 @@ class LaunchModal extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleModalSubmit = this.handleModalSubmit.bind(this)
   }
@@ -43,50 +42,43 @@ class LaunchModal extends React.Component {
        this.setState({modalIsOpen: true})
   }
  
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
  
   closeModal() {
-    console.log('close')
     this.setState({modalIsOpen: false});
   }
  
+  // Modal reacts to updata selected mission props
+  // using outdated react effect for the time being. I realize this is depricated
   componentWillReceiveProps(nextProps){
-    console.log(nextProps,this.props)
     if(nextProps.select_launch!==this.props.select_launch){
       console.log("new launch props")
       this.openModal()
     }
   }
 
+  // send mission and user input to imaginary API
   handleModalSubmit(event){
     event.preventDefault()
-    const eData = new FormData(event.target)
-    const name = eData.get('name')
+    const eData = new FormData(event.target) // grat the target
+    const name = eData.get('name') //get the input data
     const formData = {
       'user_favorite': name,
       "mission": this.props.select_launch[0]
     }
-    console.log(event, eData, formData)
     const url = 'https://api.spacexdata.com/v3/launches/67'
     fetch(url, {
       type: "POST",
       data: formData
     })
-    .then(res => console.log(res))
+    .then(res => console.log("imaginary API response",res))
   }
 
 
   render() {
    console.log(this.props.select_launch[0])
    let mission = ''
-   let rocket = ''
-   let links;
    if(this.props.select_launch[0]){
      mission = this.props.select_launch[0];
-     links = this.props.select_launch[0].links;
    }
     return (
       <div>

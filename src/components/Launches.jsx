@@ -19,15 +19,19 @@ class Launches extends Component {
 
   async handleClick(){
     const rev = this.state.reveal_launch;
+    var x = document.getElementsByClassName("launch")[0];
+    x.querySelector(".launch-body").innerHTML = "Searching ...";
+    console.log(x)
     return ( rev == true
       ?
-       'Show Launches' 
+       null
       :
         await this.props.onLaunchApiRequest()
         .then( () => this.setState({reveal_launch:true}))
     )
   }
 
+  // pass selected modal to display modal method 
   handleModal(event){
     const name = event.currentTarget.childNodes[0].innerHTML
     const selected_mission = this.selectMission(name)
@@ -36,7 +40,6 @@ class Launches extends Component {
 
   //gets the mission data and changes modal state
   displayModal(mission){
-    console.log(this.props)
     this.props.onRevealLaunchModal(mission)
 
   }
@@ -91,7 +94,7 @@ class Launches extends Component {
             ?
               <div className="launch-body"> Show Launches </div>
             :
-            <div className="launch-body">
+            <div className="launch-body"> 
             { 
                 launchItems = launch.map( ( res, index ) => {
                 return <LaunchItem  onClick={this.handleModal} mission={res.mission_name} nationality={res.rocket.second_stage.payloads[0].nationality} manufacturer={res.rocket.second_stage.payloads[0].manufacturer} type={res.rocket.second_stage.payloads[0].payload_type} key={index} />

@@ -18,8 +18,6 @@ export class History extends Component {
   }
 
   async handleClick(){
-    console.log("handleClick history", this.props)
-    
     await this.props.onHistoryApiRequest()
     .then( () => this.setState({reveal_history:true}))
     
