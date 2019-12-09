@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles/App.css';
-
 import History from './components/History'
 import Launches from './components/Launches'
 import LaunchModal from './components/LaunchModal'
@@ -11,7 +10,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        SPACE X MISSIONS
+        <h1>SPACE X MISSIONS</h1>
+        <h7>a history of all the space x missions</h7>
       </header>
       <LaunchModal/>
       <div className="app-body">

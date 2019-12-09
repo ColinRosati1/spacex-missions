@@ -28,6 +28,7 @@ export class History extends Component {
   render() {
     let history = this.props.history
     let histItems = []
+    
     return (
       <div className="history" onClick={this.handleClick}>
       <header className="history-header">
@@ -39,7 +40,8 @@ export class History extends Component {
             <div> Show history </div>
           :
             histItems = history.map( res => {
-              return <HistoryItem title={res.title} details={res.details} date={res.event_date_utc} link={res.links} key={res.id}/>
+
+              return <HistoryItem title={res.title} details={res.details} date={res.event_date_utc} links={res.links.article} key={res.id}/>
             })
         )
       }

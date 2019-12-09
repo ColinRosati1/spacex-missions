@@ -24,6 +24,7 @@
 .App-header {
   background-color: #000;
   min-height: 15vh;
+  padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
