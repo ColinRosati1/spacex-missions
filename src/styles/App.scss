@@ -6,7 +6,6 @@
 
 .app-body {
     @include flex-center(row, center, center);
-    padding: 0em 1em 1em 1em;
     height: 85vh;
     font-size: calc(10px + 2vmin);
 }
