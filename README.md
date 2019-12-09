@@ -9,12 +9,17 @@ API documented in this page: https://docs.spacexdata.com/?version=latest
 
 Task 
 
-●	Use Redux
-●	Main app has two components History & launches
-●	History onclick  api display results
-●	Launch onclick api display results
-●	Launch Search interacts with redux store
-●	Launch results onlclick displays launch detail modal
+Use React/Redux.
+
+Main app has two components History & launches.
+
+History onclick  api display results.
+
+Launch onclick api display results.
+
+Launch Search interacts with redux store.
+
+Launch results onlclick displays launch detail modal.
 
 ### Context
 
@@ -29,11 +34,15 @@ Redux actions query api, seach api results. Components render different states b
 
 ### TODOS
 
-Add more unit testing
-Add integration testing with redux store
-make more launch api performance optimizations test the following
-    GET https://api.spacexdata.com/v3/launches/latest?pretty=true to reduce payload size
-    GET https://api.spacexdata.com/v3/launches?limit=50 to limit the amount of results
+Add more unit testing.
+
+Add integration testing with redux store.
+
+make more launch api performance optimizations test the following.
+
+    GET https://api.spacexdata.com/v3/launches/latest?pretty=true to reduce payload size.
+    
+    GET https://api.spacexdata.com/v3/launches?limit=50 to limit the amount of results.
 
 ### Steps to Run
 
