@@ -22,7 +22,11 @@
     font-size: 1em;
     line-height: 40px;
     text-align: left;
-    .history-item-link {
+    a {
+        color: red;
+        text-decoration: none;
+    }
+    a:visited {
         color: red;
     }
 }

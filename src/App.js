@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>SPACE X MISSIONS</h1>
-        <h7>a history of all the space x missions</h7>
+        <h5>a history of all the space x missions</h5>
       </header>
       <LaunchModal/>
       <div className="app-body">

@@ -38,7 +38,7 @@ class LaunchModal extends React.Component {
   }
  
   openModal() {
-      let x = this.setState({modalIsOpen: true})
+       this.setState({modalIsOpen: true})
   }
  
   afterOpenModal() {

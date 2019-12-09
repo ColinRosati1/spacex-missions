@@ -19,7 +19,7 @@ class Launches extends Component {
 
   async handleClick(){
     const rev = this.state.reveal_launch;
-    return ( this.state.reveal_launch == true
+    return ( rev == true
       ?
        'Show Launches' 
       :

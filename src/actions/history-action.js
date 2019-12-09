@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export const UPDATE_HISTORY_API_REQUEST = 'history:updateHistory'
 export const SHOW_HISTORY_API_REQUEST_ERROR = 'historyr:showErrorHistory'
 

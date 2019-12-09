@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export const UPDATE_LAUNCH_API_REQUEST_SUCCESS = 'launch:launchUpdate'
 export const SHOW_LAUNCH_API_REQUEST_ERROR = 'launch:showErrorLaunch'
 
@@ -23,7 +21,9 @@ export function showErrorLaunch() {
 
 export function LaunchApiRequest() {
     return dispatch => {
-        return fetch('https://api.spacexdata.com/v3/launches')
+        return fetch('https://api.spacexdata.com/v3/launches', {
+                'X-RateLimit-limit': 50
+            })
             .then(response => response.json())
             .then(response => dispatch(launchUpdate(response)))
             .catch(err => {

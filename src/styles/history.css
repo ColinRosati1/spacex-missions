@@ -23,7 +23,12 @@
   text-align: left;
 }
 
-.history-item .history-item-link {
+.history-item a {
+  color: red;
+  text-decoration: none;
+}
+
+.history-item a:visited {
   color: red;
 }
 /*# sourceMappingURL=history.css.map */
